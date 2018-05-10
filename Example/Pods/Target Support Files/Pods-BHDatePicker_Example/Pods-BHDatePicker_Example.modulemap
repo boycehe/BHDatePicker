@@ -1,0 +1,6 @@
+framework module Pods_BHDatePicker_Example {
+  umbrella header "Pods-BHDatePicker_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module BHDatePicker {
+  umbrella header "BHDatePicker-umbrella.h"
+
+  export *
+  module * { export * }
+}

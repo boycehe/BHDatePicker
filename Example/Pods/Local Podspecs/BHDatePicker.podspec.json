@@ -1,0 +1,27 @@
+{
+  "name": "BHDatePicker",
+  "version": "0.1.0",
+  "summary": "A short description of BHDatePicker.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/boycehe.com/BHDatePicker",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "boycehe.com": "boycehe.com"
+  },
+  "source": {
+    "git": "https://github.com/boycehe.com/BHDatePicker.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "BHDatePicker/Classes/*.swift",
+  "dependencies": {
+    "SnapKit": [
+      "~> 4.0.0"
+    ]
+  }
+}
