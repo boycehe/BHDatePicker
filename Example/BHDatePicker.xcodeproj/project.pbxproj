@@ -29,7 +29,7 @@
 
 /* Begin PBXFileReference section */
 		25049FDFA8C69C26F9F6A383 /* Pods_BHDatePicker_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BHDatePicker_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		33B19817BCCBF6222456ED60 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		33B19817BCCBF6222456ED60 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		4A9B001558F611186DF01055 /* Pods-BHDatePicker_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BHDatePicker_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BHDatePicker_Tests/Pods-BHDatePicker_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* BHDatePicker_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BHDatePicker_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -43,10 +43,10 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		75D7C55A73E78F954FD073E3 /* Pods-BHDatePicker_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BHDatePicker_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BHDatePicker_Example/Pods-BHDatePicker_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		85209D5CB4B23F4962748426 /* Pods-BHDatePicker_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BHDatePicker_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BHDatePicker_Tests/Pods-BHDatePicker_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		99D912AD819B10E83A8ECF94 /* BHDatePicker.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = BHDatePicker.podspec; path = ../BHDatePicker.podspec; sourceTree = "<group>"; };
+		99D912AD819B10E83A8ECF94 /* BHDatePicker.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = BHDatePicker.podspec; path = ../BHDatePicker.podspec; sourceTree = "<group>"; };
 		BE3137703F9CB588179BE58E /* Pods_BHDatePicker_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BHDatePicker_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFABCB5E19C663B8370B796A /* Pods-BHDatePicker_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BHDatePicker_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-BHDatePicker_Example/Pods-BHDatePicker_Example.release.xcconfig"; sourceTree = "<group>"; };
-		F945A14E9EF5DD9370D7747C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		F945A14E9EF5DD9370D7747C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,10 +215,13 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = KJF9XX77S6;
 						LastSwiftMigration = 0900;
+						ProvisioningStyle = Manual;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = UW76UGY55F;
 						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -519,11 +522,15 @@
 			baseConfigurationReference = 75D7C55A73E78F954FD073E3 /* Pods-BHDatePicker_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = KJF9XX77S6;
 				INFOPLIST_FILE = BHDatePicker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ebeauty.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0e927bbf-6edd-4ee5-89ee-edfa047de58a";
+				PROVISIONING_PROFILE_SPECIFIER = ebeauty_demo;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
@@ -534,11 +541,14 @@
 			baseConfigurationReference = BFABCB5E19C663B8370B796A /* Pods-BHDatePicker_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = BHDatePicker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ebeauty.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
@@ -548,6 +558,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4A9B001558F611186DF01055 /* Pods-BHDatePicker_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = UW76UGY55F;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -569,6 +580,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 85209D5CB4B23F4962748426 /* Pods-BHDatePicker_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = UW76UGY55F;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
