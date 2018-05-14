@@ -17,7 +17,7 @@ class ViewController: UIViewController {
       
       
     
-       let dateView = BHDatePickerView.init(dateStyle: .monthDayHourMinute)
+        let dateView = BHDatePickerView.init(dateStyle: .monthDayHourMinute)
         self.view.addSubview(dateView)
         dateView.snp.makeConstraints { (make) in
         make.top.right.left.bottom.equalTo(self.view)

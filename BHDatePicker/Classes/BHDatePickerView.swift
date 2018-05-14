@@ -37,6 +37,8 @@ public class BHDatePickerView: UIView {
     var dayIndex                  = 1
     var hourIndex                 = 0
     var minuteIndex               = 0
+    var preRow                    = 0
+  
   
   
  
@@ -46,26 +48,69 @@ public class BHDatePickerView: UIView {
   
   public init(dateStyle: BHDateStyle,scrollToDate:Date){
       super.init(frame: CGRect.init(x: 0, y: 0, width: 100, height: 100))
+      self.dateStyle = dateStyle
       self.setUpUI()
       self.configData()
-      var arr:Array<String> = Array.init()
-      arr.append("年")
-      arr.append("月")
-      arr.append("日")
-      arr.append("时")
-      arr.append("分")
-      self.addLabel(titleArray: arr)
+      self.prepareAddLabels()
   }
+  
+  
   
   required public init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
   }
   
+  func prepareAddLabels(){
+    
+    var arr:Array<String> = Array.init()
+   
+    switch self.dateStyle {
+      
+      case .yearMonthDayHourMinute:
+        arr.append("年")
+        arr.append("月")
+        arr.append("日")
+        arr.append("时")
+        arr.append("分")
+      case .monthDayHourMinute:
+        arr.append("月")
+        arr.append("日")
+        arr.append("时")
+        arr.append("分")
+      case .yearMonthDay:
+        arr.append("年")
+        arr.append("月")
+        arr.append("日")
+      case .yearMonth:
+        arr.append("年")
+        arr.append("月")
+      case .monthDay:
+        arr.append("月")
+        arr.append("日")
+      case .hourMinute:
+        arr.append("时")
+        arr.append("分")
+    
+    }
+    
+     self.addLabel(titleArray: arr)
+    
+  }
+  
   func addLabel(titleArray:Array<String>){
+    
+    for view in (self.yearView?.subviews)! {
+      
+      if view.tag > 1000 {
+        view.removeFromSuperview()
+      }
+      
+    }
     
     for index in 0 ... titleArray.count - 1 {
       
-      let label = UILabel.init()
+      let label  = UILabel.init()
+      label.tag  = 1000 + index
       label.textAlignment = .center
       label.text = titleArray[index]
       label.font = UIFont.systemFont(ofSize: 16)
@@ -77,7 +122,7 @@ public class BHDatePickerView: UIView {
         make.width.equalTo(15)
         make.height.equalTo(15)
         if index == titleArray.count - 1{
-          make.left.equalTo(self.yearView!).offset(sepWidth*CGFloat(index+1) - 17.0)
+          make.left.equalTo(self.yearView!).offset(sepWidth*CGFloat(index+1) - 20.0)
         }else{
           make.left.equalTo(self.yearView!).offset(sepWidth*CGFloat(index+1) - 15.0/2.0)
         }
@@ -129,7 +174,7 @@ public class BHDatePickerView: UIView {
     self.bottomView = UIView.init()
     self.bottomView?.layer.cornerRadius  = 10.0
     self.bottomView?.layer.masksToBounds = true
-    self.bottomView?.backgroundColor     = UIColor.red
+    self.bottomView?.backgroundColor     = UIColor.white
     self.addSubview(self.bottomView!)
     
     self.bottomView?.snp.makeConstraints({ (make) in
@@ -171,7 +216,7 @@ public class BHDatePickerView: UIView {
     self.datePicker!.delegate   = self
     self.datePicker!.dataSource = self
     
-    self.datePicker!.backgroundColor = UIColor.green
+    self.datePicker!.backgroundColor = UIColor.white
     self.yearView?.addSubview(self.datePicker!)
     self.datePicker?.snp.makeConstraints({ (make) in
       make.left.right.top.bottom.equalTo(self.yearView!)
@@ -219,7 +264,6 @@ public class BHDatePickerView: UIView {
    
     }
     
-    
     return array
     
   }
@@ -256,6 +300,7 @@ public class BHDatePickerView: UIView {
   }
   
   func dayArray(day:Int){
+    
     self.dayArray.removeAll()
     
     for index in 1 ... day {
@@ -295,15 +340,19 @@ public class BHDatePickerView: UIView {
       
     case .monthDayHourMinute:
       if component == 0 {
-         title = self.yearArray[row%12]
+         title = self.monthArray[row%12]
       }
       
       if component == 1 {
-        title = self.monthArray[row]
+        title = self.dayArray[row]
       }
       
       if component == 2{
-        title = self.dayArray[row]
+        title = self.hourArray[row]
+      }
+      
+      if component == 3 {
+        title = self.minuteArray[row]
       }
       
     case .yearMonthDay:
@@ -360,6 +409,33 @@ public class BHDatePickerView: UIView {
     return title
     
   }
+  
+  func yearChange(monthRow:Int){
+    
+     self.monthIndex = monthRow%12
+    
+     if monthRow - preRow < 12 && monthRow - preRow > 0 && self.monthArray[self.monthIndex] < self.monthArray[preRow%12] {
+     
+       self.yearIndex = self.yearIndex + 1
+      
+     } else if preRow-monthRow < 12 && preRow - monthRow > 0 && self.monthArray[self.monthIndex] > self.monthArray[self.preRow%12]{
+      
+       self.yearIndex = self.yearIndex - 1
+      
+     } else {
+      
+      let interval = (monthRow - preRow)/12
+      self.yearIndex = self.yearIndex + interval
+      
+    }
+    
+    self.yearView?.text = self.yearArray[self.yearIndex]
+    
+    preRow = monthRow
+  
+  }
+  
+  
 
 }
 
@@ -455,6 +531,10 @@ extension BHDatePickerView:UIPickerViewDelegate,UIPickerViewDataSource{
       
       if component == 2{
        self.hourIndex = row
+      }
+      
+      if component == 3 {
+        self.minuteIndex = row
       }
       
     case .yearMonthDay:
